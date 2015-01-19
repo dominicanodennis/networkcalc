@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <resources>
+        <string name="cidr">CIDR: </string>
+        <string name="ip_adresse">IP-Adresse: </string>
+        <string name="netzwerk">Netzwerkadresse: </string>
+        <string name="hosts">Anzahl der Hosts:</string>
+        <string name="hostip_von">Host-IP von: </string>
+        <string name="hostip_bis">bis: </string>
+        <string name="ip_adresse1">IP-Adresse Hier eintragen.</string>
+        <string name="netzwerkmaske">Netzwerkmaske: </string>
+        <string name="broadcast">Broadcast: </string>
+        <string name="action_settings">action settings</string>
+        <string name="app_name">Netzwerkrechner</string>
+        <string name="punkt">.</string>
+        <string name="rechnen">Ausführen</string>
+         <string name="clear">Löschen</string>
+        <string name="b_weiter">Weiter</string>
+        <string name="einfuehrung">Willkommen! Wir freuen uns, dass sie unsere App heruntergeladen haben und diese auch benutzen. Diese App ist ein Netzwerkrechner, welches heißt, dass man die Broadcasts, die Netzwerkadresse und vieles mehr berechnen kann, ohne selber etwas dafür zu tun. Außerdem werden die Hosts angezeigt und damit wird eine schnelle, und stressfreie Rechnerei geboten. </string>
+        <string name="app_team">Das App-Team wünscht ihn viel Spaß mit diesem Feature.</string>
+    </resources>
