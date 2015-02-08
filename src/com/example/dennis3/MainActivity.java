@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -68,106 +69,119 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		// caracteranzahl in den EditTextfeldern der ipadresse festzulegen
 		// TextchangedListener wird benötigt um nach Änderung im EditText
 		// Methode berechnen() sofort aufzurufen
-		ip1 = (EditText) findViewById(R.id.ip_adresse1);
-		ip1.setText("192");
-		ip1.addTextChangedListener(new MaxLengthWatcher(3, ip1));
-		ip1.addTextChangedListener(new TextWatcher() {
+
+		class Prozess implements Runnable {
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				berechnen();
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
+			public void run() {
 				// TODO Auto-generated method stub
 
+				ip1 = (EditText) findViewById(R.id.ip_adresse1);
+				ip1.setText("192");
+				ip1.addTextChangedListener(new MaxLengthWatcher(3, ip1));
+				ip1.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count) {
+						berechnen();
+
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+
+					}
+				});
+
+				ip2 = (EditText) findViewById(R.id.ip_adresse2);
+				ip2.setText("168");
+				ip2.addTextChangedListener(new MaxLengthWatcher(3, ip2));
+				ip2.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count) {
+						berechnen();
+
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+
+				ip3 = (EditText) findViewById(R.id.ip_adresse3);
+				ip3.setText("132");
+				ip3.addTextChangedListener(new MaxLengthWatcher(3, ip3));
+				ip3.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count) {
+						berechnen();
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+
+				ip4 = (EditText) findViewById(R.id.ip_adresse4);
+				ip4.setText("1");
+				ip4.addTextChangedListener(new MaxLengthWatcher(3, ip4));
+				ip4.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count) {
+						berechnen();
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+						// TODO Auto-generated method stub
+
+					}
+				});
 			}
 
-			@Override
-			public void afterTextChanged(Editable s) {
+		}
 
-			}
-		});
-
-		ip2 = (EditText) findViewById(R.id.ip_adresse2);
-		ip2.setText("168");
-		ip2.addTextChangedListener(new MaxLengthWatcher(3, ip2));
-		ip2.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				berechnen();
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		ip3 = (EditText) findViewById(R.id.ip_adresse3);
-		ip3.setText("132");
-		ip3.addTextChangedListener(new MaxLengthWatcher(3, ip3));
-		ip3.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				berechnen();
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		ip4 = (EditText) findViewById(R.id.ip_adresse4);
-		ip4.setText("1");
-		ip4.addTextChangedListener(new MaxLengthWatcher(3, ip4));
-		ip4.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				berechnen();
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+		Thread thread = new Thread(new Prozess());
+		thread.start();
 
 		// / Möglichkeit Methode zu rufen wenn man EditTextfeld verlässt (
 		// onFocus )
